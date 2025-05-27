@@ -62,6 +62,17 @@ app.post("/api/applications/:appId/methods", async (req, res) => {
   try {
     const appId = parseInt(req.params.appId);
     const { name, description, script } = req.body;
+
+    // Check if application with appId exists
+    const application = await prisma.application.findUnique({
+      where: { id: appId },
+    });
+
+    if (!application) {
+      return res.status(404).json({ error: "Application not found" });
+    }
+
+    // Proceed to create method
     const method = await prisma.method.create({
       data: {
         name,
@@ -70,6 +81,7 @@ app.post("/api/applications/:appId/methods", async (req, res) => {
         applicationId: appId,
       },
     });
+
     res.status(201).json(method);
   } catch (err) {
     res.status(500).json({ error: err.message });
