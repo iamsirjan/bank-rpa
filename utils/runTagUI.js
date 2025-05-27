@@ -1,10 +1,12 @@
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-
 function runTagUIScript(methodId, scriptContent) {
   const taguiPath = path.resolve(__dirname, "../tagui/src/tagui");
   const scriptPath = path.resolve(__dirname, `../../scripts/${methodId}.tag`);
+
+  // Ensure directory exists
+  const dir = path.dirname(scriptPath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 
   fs.writeFileSync(scriptPath, scriptContent);
 
@@ -22,5 +24,3 @@ function runTagUIScript(methodId, scriptContent) {
     );
   });
 }
-
-module.exports = { runTagUIScript };
