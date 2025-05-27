@@ -1,3 +1,8 @@
+// utils/runTagUI.js
+const fs = require("fs");
+const path = require("path");
+const { exec } = require("child_process");
+
 function runTagUIScript(methodId, scriptContent) {
   const taguiPath = path.resolve(__dirname, "../tagui/src/tagui");
   const scriptPath = path.resolve(__dirname, `../../scripts/${methodId}.tag`);
@@ -24,3 +29,5 @@ function runTagUIScript(methodId, scriptContent) {
     );
   });
 }
+
+module.exports = { runTagUIScript };
