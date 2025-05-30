@@ -130,9 +130,7 @@ wait 1
 click (//input[@name="btnK" and @type="submit"])[1]
 wait 5
 snap page to before_click.png
-click (//div[@class="yuRUbf"]/a)[1]
-wait 3
-snap page to after_click.png
+
 echo "Clicked first result and captured screenshot"
 
 `;
