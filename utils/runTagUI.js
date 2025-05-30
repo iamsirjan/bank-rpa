@@ -17,7 +17,7 @@ function runTagUIScript(methodId, scriptContent) {
 
   return new Promise((resolve, reject) => {
     exec(
-      `"${taguiPath}" "${scriptPath}" chrome --headless`,
+      `"${taguiPath}" "${scriptPath}" edge --headless`,
       (err, stdout, stderr) => {
         if (err) {
           const errorMsg = `TagUI execution error:\n${err}\nSTDOUT:\n${stdout}\nSTDERR:\n${stderr}`;
