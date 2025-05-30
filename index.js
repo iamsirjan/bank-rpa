@@ -129,10 +129,11 @@ type //*[@name="q"] as latest movies
 wait 1
 click (//input[@name="btnK" and @type="submit"])[1]
 wait 5
-click (//div[@class='g']//a)[1]
+click (//a[h3])[1]
 wait 3
 snap page to result.png
 echo "Clicked first result and captured screenshot"
+
 
 `;
 
